@@ -17,7 +17,7 @@ _参数：_ options
 _用法:_
 
 ```javascript
-const { DetSpecInfoStopPlugin } = require("webpack-plugin")
+const { DetSpecInfoStopPlugin } = require("webpack-detection-field-plugin")
 
 // webpack.config.js
 module.exports = {
@@ -50,7 +50,7 @@ _参数：_ options
 _用法:_
 
 ```javascript
-const { ReplaceSpecifiedInfoPlugin } = require("webpack-plugin")
+const { ReplaceSpecifiedInfoPlugin } = require("webpack-detection-field-plugin")
 
 // webpack.config.js
 module.exports = {

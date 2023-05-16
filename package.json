@@ -1,7 +1,7 @@
 {
   "dependencies": {},
   "name": "webpack-detection-field-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "author": "bamboo",
   "license": "MIT",
