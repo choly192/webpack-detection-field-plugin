@@ -16,8 +16,8 @@ function cleanDist() {
   return gulp.src("dist", { read: false, allowEmpty: true }).pipe(clean())
 }
 
-function copyLicense() {
-  return gulp.src(["./LICENSE"])
+function copyOther() {
+  return gulp.src(["./LICENSE", "./README.md"])
     .pipe(gulp.dest('dist'))
 }
 
@@ -42,4 +42,4 @@ function copyPackageJson() {
 // });
 exports.build = build;
 exports.clean = cleanDist;
-exports.default = gulp.series(cleanDist, gulp.parallel(copyLicense, copyPackageJson), build)
+exports.default = gulp.series(cleanDist, gulp.parallel(copyOther, copyPackageJson), build)
