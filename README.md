@@ -1,6 +1,10 @@
-# DetSpecInfoStopPlugin
+# 安装
 
----
+```bash
+yarn add webpack-detection-field-plugin -D
+```
+
+## DetSpecInfoStopPlugin
 
 _DetSpecInfoStopPlugin_ 检测项目中的指定的 _字符_ ，如果存在则终止打包。
 
@@ -28,9 +32,7 @@ module.exports = {
 }
 ```
 
-# ReplaceSpecifiedInfoPlugin
-
----
+## ReplaceSpecifiedInfoPlugin
 
 _ReplaceSpecifiedInfoPlugin_ 检测项目中的指定的 _字符_ ，若存在指定的字符支持两种操作：
 
