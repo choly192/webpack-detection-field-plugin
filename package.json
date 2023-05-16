@@ -1,0 +1,25 @@
+{
+  "dependencies": {},
+  "name": "webpack-detection-field-plugin",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "bamboo",
+  "license": "MIT",
+  "keywords": ["webpack","detection", "field"],
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
+    "typescript": "^5.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/choly192/webpack-detection-field-plugin.git"
+  }
+}
