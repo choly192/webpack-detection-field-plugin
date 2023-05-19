@@ -1,14 +1,14 @@
 {
   "dependencies": {},
   "name": "webpack-detection-field-plugin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
   "author": "bamboo",
   "license": "MIT",
   "keywords": [
-    "webpack",
-    "detection",
-    "field"
+    "webpack-detection-field",
+    "replace-specified",
+    "det-specified-stop"
   ],
   "scripts": {
     "build": "gulp",

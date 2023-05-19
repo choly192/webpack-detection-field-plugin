@@ -28,8 +28,11 @@ class DetSpecInfoStopPlugin implements WebpackPlugin {
                   this.options.specifiedInfo
                 ); // 判断是否包含指定的字符串
                 if (isIncludeTarget) {
-                  // console.log('Detected stop signal. Packaging aborted.');
-                  errorPosition(sourceCode, this.options.specifiedInfo);
+                  errorPosition(
+                    sourceCode,
+                    this.options.specifiedInfo,
+                    parser.state.module.resource
+                  );
                   // 终止打包
                   process.exit(1);
                 }
