@@ -12,12 +12,13 @@ import { Options } from "./type";
 /**
  * 替换掉项目文件中 指定文本
  */
+const PLUGIN_NAME = "ReplaceSpecifiedInfoPlugin";
 class ReplaceSpecifiedInfoPlugin implements WebpackPlugin {
   constructor(readonly options: Options) {}
 
   apply(compiler: any) {
     compiler.hooks.emit.tapAsync(
-      "FilterSpecifiedInfoPlugin",
+      PLUGIN_NAME,
       (compilation: any, callback: Function) => {
         const { replaceTextArr, targetText, isStopPackaging } = this.options;
 

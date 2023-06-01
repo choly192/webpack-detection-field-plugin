@@ -22,7 +22,9 @@ export function errorPosition(str: string, pattern: string[], file: string) {
 
   // 检查逻辑
   if (regex.test(str)) {
-    const error = new Error("Code contains invalid fields: " + `${file}`);
+    const error = new Error(
+      `Code contains invalid fields: ${pattern.join("|")} in ${file}`
+    );
     throw error;
   }
 }
