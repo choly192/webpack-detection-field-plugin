@@ -20,7 +20,8 @@ class ReplaceSpecifiedInfoPlugin implements WebpackPlugin {
     compiler.hooks.emit.tapAsync(
       PLUGIN_NAME,
       (compilation: any, callback: Function) => {
-        const { replaceTextArr, targetText, isStopPackaging } = this.options;
+        const { replaceTextArr, targetText, isStopPackaging, checkFileType } =
+          this.options;
 
         if (getType(replaceTextArr) !== "Array") {
           console.error("'specifiedInfo' type is not Array!");
@@ -31,31 +32,35 @@ class ReplaceSpecifiedInfoPlugin implements WebpackPlugin {
 
         // 遍历所有资源文件
         for (const filename in compilation.assets) {
-          // 获取文本内容
-          let content = compilation.assets[filename].source();
+          // 获取文件后缀
+          const fileExtension = filename.split(".").pop() ?? "";
+          if (checkFileType.length && checkFileType.includes(fileExtension)) {
+            // 获取文本内容
+            let content = compilation.assets[filename].source();
 
-          // 判断文本内容是否包含指定的内容
-          const isIncludeTarget = matchString(content, replaceTextArr); // 判断是否包含指定的字符串
+            // 判断文本内容是否包含指定的内容
+            const isIncludeTarget = matchString(content, replaceTextArr); // 判断是否包含指定的字符串
 
-          if (isIncludeTarget) {
-            if (isStopPackaging) {
-              console.log(
-                `file content may contains invalid fields: ${replaceTextArr} `
-              );
-              process.exit(1);
+            if (isIncludeTarget) {
+              if (isStopPackaging) {
+                console.log(
+                  `file content may contains invalid fields: ${replaceTextArr} `
+                );
+                process.exit(1);
+              }
+
+              if (targetText && !isStopPackaging) {
+                // 替换文件内容中包含指定文本的部分
+                content = content.replace(regex, targetText);
+              }
             }
 
-            if (targetText && !isStopPackaging) {
-              // 替换文件内容中包含指定文本的部分
-              content = content.replace(regex, targetText);
-            }
+            // 更新资源文件的内容
+            compilation.assets[filename] = {
+              source: () => content,
+              size: () => content.length,
+            };
           }
-
-          // 更新资源文件的内容
-          compilation.assets[filename] = {
-            source: () => content,
-            size: () => content.length,
-          };
         }
 
         callback();
